@@ -1,4 +1,11 @@
 {
+  "name": "gulp-bootstrap-starter",
+  "version": "1.0.0",
+  "private": true,
+  "repository" : { 
+   "type" : "git",
+   "url" : "http://github.com/npm/npm.git"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "autoprefixer-core": "^6.0.1",
