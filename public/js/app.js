@@ -1,2 +1,1 @@
-console.log("main js");
-console.log('test.js');
+console.log("update mainjs"),console.log("test.js");

@@ -9,6 +9,7 @@ var notify        = require('gulp-notify');
 var plumber       = require('gulp-plumber');
 var jshint        = require('gulp-jshint');
 var concat        = require('gulp-concat');
+var uglify        = require('gulp-uglify');
 
 
 // jshint      = require('gulp-jshint'),
@@ -50,31 +51,25 @@ gulp.task('fonts', function() {
 
 gulp.task('js',function(){
   return gulp.src('./src/js/*.js')
+  .pipe(plumber(plumberErrorHandler))
   .pipe(jshint())
   .pipe(jshint.reporter('fail'))
-  .pipe(plumber(plumberErrorHandler))
   .pipe(concat('app.js'))
   .pipe(gulp.dest(config.publicDir+'/js'))
-  .pipe(notify({title:'Sukses',message:'File Js berhasil digabung dan dikompres bos!'}));
+  .pipe(notify({title:'Sukses',message:'File Js berhasil digabung bos!'}));
 })
 
-// gulp.task('watch',function(){
-//   livereload.listen();
-//   gulp.watch('css/src/*.scss'),['sass']);
-//   gulp.watch('js/src/*.js',['js']);
-//   gulp.watch('img/src/*.{png,jpg,gif}',['img']);
-// })
-
+gulp.task('compress',function(){
+  return gulp.src(config.publicDir+'/js/app.js')
+  .pipe(uglify())
+  .pipe(gulp.dest(config.publicDir+'/js'))
+  .pipe(notify({title:'Sukses',message:'File Js berhasil dikompres bos!'}));
+})
 
 gulp.task('watch',function(){
   gulp.watch('./src/css/style.scss',['css']);
   gulp.watch('./src/js/*.js',['js']);
+  gulp.watch(config.publicDir+'/js/app.js',['compress']);
 })
 
-// gulp.task('default',['sass','js','img','watch'])
-
-gulp.task('default', ['css', 'js','fonts','watch']);
-
-// gulp.task('watch:styles',function(){
-//   gulp.watch('**/*.css',['styles']);
-// })
+gulp.task('default', ['css','fonts','js','compress','watch']);
