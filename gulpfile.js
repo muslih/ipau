@@ -5,10 +5,25 @@ var postcss       = require('gulp-postcss');
 var sass          = require('gulp-sass');
 var csswring      = require('csswring');
 var autoprefixer  = require('autoprefixer');
+var notify        = require('gulp-notify');
+var plumber       = require('gulp-plumber');
+
+
+// jshint      = require('gulp-jshint'),
+// concat      = require('gulp-concat'),
+// imagemin    = require('gulp-imagemin'),
+// plumber     = require('gulp-plumber'),
+// notify      = require('gulp-notify'),
 
 var config = {
     bootstrapDir: './bower_components/bootstrap-sass',
-    publicDir: './public',
+    publicDir: './public'
+};
+
+var plumberErrorHandler = { errorHandler: notify.onError({
+    title: 'Gulp',
+    message: 'Error: <%= error.message %>'
+  })
 };
 
 gulp.task('css', function() {
@@ -17,11 +32,13 @@ gulp.task('css', function() {
       autoprefixer({browsers:['last 2 version']})
     ];
     return gulp.src('./src/css/style.scss')
+    .pipe(plumber(plumberErrorHandler))
     .pipe(sass({
         includePaths: [config.bootstrapDir + '/assets/stylesheets'],
     }))
     .pipe(postcss(processors))
-    .pipe(gulp.dest(config.publicDir + '/css'));
+    .pipe(gulp.dest(config.publicDir + '/css'))
+    .pipe(notify({title:'Sukses',message:'File css berhasil digabung dan dikompres bos!'}));
 });
 
 gulp.task('fonts', function() {

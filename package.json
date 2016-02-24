@@ -2,9 +2,9 @@
   "name": "gulp-bootstrap-starter",
   "version": "1.0.0",
   "private": true,
-  "repository" : { 
-   "type" : "git",
-   "url" : "http://github.com/npm/npm.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/npm/npm.git"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
@@ -14,5 +14,29 @@
     "gulp-bower": "0.0.10",
     "gulp-postcss": "^6.1.0",
     "gulp-sass": "^1.3.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/npm/npm/issues"
+  },
+  "homepage": "https://github.com/npm/npm",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "^6.3.3",
+    "autoprefixer-core": "^6.0.1",
+    "csswring": "^4.2.1",
+    "gulp": "^3.9.1",
+    "gulp-bower": "^0.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-sass": "^1.3.3",
+    "jshint": "^2.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "muslih",
+  "license": "MIT"
 }
