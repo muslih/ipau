@@ -1,1 +1,1 @@
-console.log("update mainjs")
+console.log('mainjssaja');
