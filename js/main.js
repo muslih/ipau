@@ -1,1 +1,1 @@
-console.log("mainjssaja");
+console.log('mainjssaja');
