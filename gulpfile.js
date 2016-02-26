@@ -35,8 +35,7 @@ gulp.task('css', function() {
       includePaths: [config.bootstrapDir + '/assets/stylesheets'],
   }))
   .pipe(postcss(processors))
-  .pipe(gulp.dest(config.publicDir + '/css'))
-  .pipe(notify({title:'Sukses',message:'File css berhasil digabung dan dikompres bos!'}));
+  .pipe(gulp.dest(config.publicDir + '/css'));
 });
 
 gulp.task('fonts', function() {
