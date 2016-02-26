@@ -43,16 +43,21 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
+
 gulp.task('js',function(){
   return gulp.src('./src/js/*.js')
+  .pipe(plumber(plumberErrorHandler))
   .pipe(jshint())
   .pipe(jshint.reporter('fail'))
-  .pipe(concat('main.js'))
   .pipe(gulp.dest(config.publicDir+'/js'));
 })
 
+
 gulp.task('compress',function(){
   return gulp.src(config.publicDir+'/js/main.js')
+  .pipe(plumber(plumberErrorHandler))
+  .pipe(jshint())
+  .pipe(jshint.reporter('fail'))
   .pipe(uglify())
   .pipe(gulp.dest(config.publicDir+'/js'));
 })
