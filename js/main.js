@@ -1,1 +1,1 @@
-console.log("mainjs"),console.log("Tambahan");
+console.log("mainjs");
