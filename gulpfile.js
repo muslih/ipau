@@ -76,7 +76,6 @@ gulp.task('serve',['css','fonts','js','compress','watch'],function(){
     server: {
       baseDir: "./app"
     }
-    
   });
 })
 
