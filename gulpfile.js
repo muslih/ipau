@@ -63,7 +63,7 @@ gulp.task('compress',function(){
 })
 
 gulp.task('watch',function(){
-  gulp.watch('./src/css/main.scss',['css']);
+  gulp.watch('./src/css/*.scss',['css']);
   gulp.watch('./src/js/*.js',['js']);
   gulp.watch(config.publicDir+'/js/main.js',['compress']);
   gulp.watch("app/**/**/**").on('change', reload);;
