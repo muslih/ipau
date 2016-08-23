@@ -9,12 +9,15 @@ var notify        = require('gulp-notify');
 var plumber       = require('gulp-plumber');
 var jshint        = require('gulp-jshint');
 var concat        = require('gulp-concat');
+var rename        = require('gulp-rename');
 var uglify        = require('gulp-uglify');
 var browserSync   = require('browser-sync').create();
 var reload        = browserSync.reload;
 
 var config = {
   bootstrapDir: './bower_components/bootstrap-sass',
+  bootstrapJsDir: './bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+  jqueryDir: './bower_components/jquery/dist/jquery.js',
   publicDir: './app'
 };
 
@@ -45,31 +48,38 @@ gulp.task('fonts', function() {
 
 
 gulp.task('js',function(){
-  return gulp.src('./src/js/*.js')
+  return gulp.src([config.jqueryDir,config.bootstrapJsDir,'./src/js/**/*.js'])
   .pipe(plumber(plumberErrorHandler))
-  .pipe(jshint())
-  .pipe(jshint.reporter('fail'))
-  .pipe(gulp.dest(config.publicDir+'/js'));
-})
-
-
-gulp.task('compress',function(){
-  return gulp.src(config.publicDir+'/js/main.js')
-  .pipe(plumber(plumberErrorHandler))
-  .pipe(jshint())
-  .pipe(jshint.reporter('fail'))
+  // .pipe(jshint())
+  .pipe( jshint.reporter( 'fail' ))
+  .pipe(concat('concat.js'))
+  .pipe(gulp.dest('./src/concat'))
+  .pipe(rename('main.js'))
   .pipe(uglify())
   .pipe(gulp.dest(config.publicDir+'/js'));
+  // .pipe(plumber(plumberErrorHandler))
+  // .pipe(jshint())
+  // .pipe(jshint.reporter('fail'))
+  // .pipe(gulp.dest(config.publicDir+'/js'));
 })
+
+// gulp.task('compress',function(){
+//   return gulp.src(config.publicDir+'/js/main.js')
+//   .pipe(plumber(plumberErrorHandler))
+//   .pipe(jshint())
+//   .pipe(jshint.reporter('fail'))
+//   .pipe(uglify())
+//   .pipe(gulp.dest(config.publicDir+'/js'));
+// })
 
 gulp.task('watch',function(){
   gulp.watch('./src/css/*.scss',['css']);
-  gulp.watch('./src/js/*.js',['js']);
-  gulp.watch(config.publicDir+'/js/main.js',['compress']);
+  gulp.watch('./src/js/**/*.js',['js']);
+  
   gulp.watch("app/**/**/**").on('change', reload);;
 })
 
-gulp.task('serve',['css','fonts','js','compress','watch'],function(){
+gulp.task('serve',['css','fonts','js','watch'],function(){
   browserSync.init({
     open: true,
     port: 8080,
