@@ -2,4 +2,7 @@
 
 {% block content %}
 <h1>This is the index page</h1>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis reprehenderit, eum libero molestias repudiandae quis rerum. Rerum nesciunt cupiditate, molestiae consectetur cum laborum hic laudantium omnis, delectus alias molestias debitis.
+</p>
 {% endblock %}
