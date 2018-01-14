@@ -7,6 +7,22 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure dolores id, vel n
 ## About Ipau
 
 ## Install
+Make sure you installed yarn in your machine! 
+
+1. Clone this repo and set rename the folder with whatever you want,
+```bash 
+git clone git@github.com:muslih/ipau.git myweb
+cd myweb/
+```
+2. Run install command
+```bash
+yarn install && bower install
+```
+3. Ready to go for development!
+```bash
+yarn run dev
+```
+
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, atque incidunt cumque, nihil esse eveniet dolorem reprehenderit magnam quasi autem deleniti, sequi enim impedit, cupiditate eaque assumenda ratione. Eveniet, dolorum!
 
 ## Features
