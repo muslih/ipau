@@ -23,9 +23,91 @@ yarn install && bower install
 yarn run dev
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, atque incidunt cumque, nihil esse eveniet dolorem reprehenderit magnam quasi autem deleniti, sequi enim impedit, cupiditate eaque assumenda ratione. Eveniet, dolorum!
-
 ## Features
+
+## Directory Structure
+Below the directory structure
+```bash
+.
+├── app
+│   ├── 404.html
+│   ├── LICENSE.txt
+│   ├── apple-touch-icon.png
+│   ├── browserconfig.xml
+│   ├── crossdomain.xml
+│   ├── css
+│   │   └── main.css
+│   ├── favicon.ico
+│   ├── fonts
+│   │   └── bootstrap
+│   │       ├── glyphicons-halflings-regular.eot
+│   │       ├── glyphicons-halflings-regular.svg
+│   │       ├── glyphicons-halflings-regular.ttf
+│   │       ├── glyphicons-halflings-regular.woff
+│   │       └── glyphicons-halflings-regular.woff2
+│   ├── humans.txt
+│   ├── img
+│   ├── index.html
+│   ├── js
+│   │   ├── main.js
+│   │   └── plugins.js
+│   ├── robots.txt
+│   ├── tile-wide.png
+│   └── tile.png
+├── bower.json
+├── gulpfile.js
+├── package.json
+├── readme.md
+├── src
+│   ├── concat
+│   │   └── concat.js
+│   ├── css
+│   │   ├── _variable.scss
+│   │   └── main.scss
+│   ├── js
+│   │   ├── main.js
+│   │   └── waluh.js
+│   ├── pages
+│   │   └── index.ipau
+│   └── templates
+│       └── layout.ipau
+└── yarn.lock
+```
+
+All web generated in `app` directory don't change files in this directory because it will change automatically once we changed any file in `src` directory
+
+### Add new page
+To add new page just create a file with `ipau` extension inside `src/pages` directory, and make sure you exteds the layout and put the content inside the blocks as below
+```html
+{% extends "main-layout.ipau" %}
+
+{% block content %}
+<h1>This is the new page</h1>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis reprehenderit, eum libero molestias repudiandae quis rerum. Rerum nesciunt cupiditate, molestiae consectetur cum laborum hic laudantium omnis, delectus alias molestias debitis.
+</p>
+{% endblock %}
+```
+You can find all the layouts in `src/templates` just pick one and put it above the file as explained before.
+
+### Add new layout
+To add new layout you can create new file inside `src/templates/` and make sure the file with  `ipau` extension. Don't forget to add block content inside new layout file, so it can be called in page file
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  {% block content %} {% endblock %}
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+```
 
 ## Lisence
 
